@@ -1,2 +1,2 @@
 # bird_bot
-Ornithology Discord bot
+Ornithology Discord Bot
