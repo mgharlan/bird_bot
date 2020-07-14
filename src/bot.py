@@ -2,7 +2,12 @@ import logging
 import os
 
 import discord
-from discord.ext import commands
+
+client = discord.Client()
+
+@client.event
+async def on_ready():
+  print(f'{client.user} has connected to Discord!')
 
 if __name__ == "__main__":
-  print("hello")
+  client.run(os.environ.get('BIRD_BOT_TOKEN'))
