@@ -14,9 +14,9 @@ class Birds(commands.Cog):
     
     self.data = pd.read_csv("bird_data/bird_urls.csv")
       
-  @commands.command(name='random')
+  @commands.command(name='random', brief='for random bird facts')
   async def send_random(self, ctx):
-    print('random selected')
+    print(f'random selected {ctx.author.name}')
     
     number = random.randint(0,self.data.shape[0])
     
@@ -57,11 +57,14 @@ class Birds(commands.Cog):
       
     await ctx.send(f'*From: {URL}*')
     
-  @commands.command(name='shutdown')
+  @commands.command(name='shutdown', hidden=True)
   async def shut_down(self, ctx):
-    print('shut down')
-    await ctx.send('Shutting Down')
-    await self.bot.logout()
+    if(ctx.author.name == 'mazonly' or ctx.author.name == 'ruby 🌻'):
+      print('shut down')
+      await ctx.send('Shutting Down')
+      await self.bot.logout()
+    else:
+      await ctx.send('no!')
 
 def setup(bot):
   bot.add_cog(Birds(bot))
