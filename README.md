@@ -10,6 +10,9 @@ Create a virtual environment called venv in the bird_bot directory and activate 
 
 ```bash
 # in bird_bot
+(venv) $ pip install beautifulsoup4
+(venv) $ pip install pandas
+(venv) $ pip install requests
 (venv) $ pip install wheel
 (venv) $ pip install -U discord.py
 ```
