@@ -18,6 +18,10 @@ class Birds(commands.Cog):
   @commands.command(name='random')
   async def send_random(self, ctx):
     bird = random.sample(self.birds,1)[0]
+    
+    image = discord.File(open(f'bird_data/{bird}.jpg','rb'))
+    await ctx.send(file=image)
+    
     file = open(f'bird_data/{bird}.txt')
     text = file.read()
     await ctx.send(text)
