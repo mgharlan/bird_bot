@@ -16,7 +16,6 @@ class BirdBot:
 
   async def on_ready(self):
     print(f'{self.bot.user} has connected to Discord!')
-
  
 if __name__ == "__main__":
   bird = BirdBot(os.environ.get('BIRD_BOT_TOKEN'))
