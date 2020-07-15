@@ -1,5 +1,7 @@
 # bird_bot
-Ornithology Discord Bot
+Ornithology Discord Bot:
+Special thanks to the Audubon Society for all the bird data they have available on their website
+
 # Setup 
 ```bash
 $ git clone https://github.com/mgharlan/bird_bot.git
