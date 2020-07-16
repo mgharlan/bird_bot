@@ -32,20 +32,27 @@ class BotCommands(commands.Cog):
     if (len(args) == 0):
       await ctx.send('please provide a first letter to list by')
     elif (len(args) == 1 and args[0].isalpha()):
-      bird_string = f'birds that begin with {args[0]}:'
+      bird_string = ''
       searching = True
+      sent = False
       for URL in self.data['BIRD URLs']:
         name = Path(URL).stem
         if name[0] == args[0]:
           if len(bird_string) > 1500:
-            await ctx.send(bird_string)
-            bird_string = '\t'
+            await ctx.send(f'birds that begin with {args[0]}:' + bird_string)
+            sent = True
+            bird_string = f'\t\t{name}'
           else:
             bird_string = bird_string + f'\n\t{name}'
           searching = False
         elif not searching:
           break
-      await ctx.send(bird_string)
+      if (len(bird_string) == 0):
+        await ctx.send(f'no birds begin with {args[0]}')
+      elif sent:
+        await ctx.send(bird_string)
+      else:
+        await ctx.send(f'birds that begin with {args[0]}:' + bird_string)
     else:
       await ctx.send('please provide one first letter to list by')
   
@@ -66,6 +73,32 @@ class BotCommands(commands.Cog):
         await ctx.send(f'bird {name} was not found in my database')
     else:
       await ctx.send('please provide one bird to show')
+  
+  @commands.command(name='f', aliases=['search','find'], brief='searches for birds')
+  async def search(self, ctx, *args):
+    if (len(args) == 0):
+      await ctx.send('please provide a word/phrase to search for')
+    else:
+      sent = False
+      for arg in args:
+        names = ''
+        phrase = arg.lower()
+        for URL in self.data['BIRD URLs']:
+          name = Path(URL).stem
+          if phrase in name:
+            names = names +f'\n\t{name}'
+          if len(names) > 1500:
+            if not sent:
+              sent = True
+              await ctx.send('these birds matched the search for {arg}:' + names)
+              names = ''
+            else:
+              await ctx.send(names)
+              names = ''
+        if len(names) == 0:
+          await ctx.send(f'no birds matched the search for {phrase} in my database')
+        elif not sent:
+          await ctx.send(f'these birds matched the search for {arg}:' + names)
   
   async def send_bird(self, ctx, URL):
     page = requests.get(URL)
