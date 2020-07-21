@@ -9,7 +9,7 @@ from discord.ext import commands
 class BirdBot:
   def __init__(self, token):
     self.token = token
-    self.bot = commands.Bot(command_prefix='-')
+    self.bot = commands.Bot(command_prefix='\\')
     self.bot.load_extension("botcommands")
     self.on_ready = self.bot.event(self.on_ready)
 
@@ -48,5 +48,5 @@ def parser():
  
 if __name__ == "__main__":
   parser()
-  bird = BirdBot(os.environ.get('BIRD_BOT_TOKEN'))
+  bird = BirdBot(os.environ.get('HERM_BOT_TOKEN'))#('BIRD_BOT_TOKEN'))
   bird.run()

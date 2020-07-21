@@ -90,7 +90,7 @@ class BotCommands(commands.Cog):
           if len(names) > 1500:
             if not sent:
               sent = True
-              await ctx.send('these birds matched the search for {arg}:' + names)
+              await ctx.send(f'these birds matched the search for {arg}:' + names)
               names = ''
             else:
               await ctx.send(names)
