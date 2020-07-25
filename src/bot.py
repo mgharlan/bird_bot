@@ -48,5 +48,5 @@ def parser():
  
 if __name__ == "__main__":
   parser()
-  bird = BirdBot(os.environ.get('HERM_BOT_TOKEN'))#('BIRD_BOT_TOKEN'))
+  bird = BirdBot(os.environ.get('BIRD_BOT_TOKEN'))
   bird.run()
