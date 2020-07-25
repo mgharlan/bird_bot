@@ -118,7 +118,7 @@ class BotCommands(commands.Cog):
       
     except Exception as e:
       logging.error(e, exc_info=True)
-      logging.info(URL + ', problem with bird image ,' + number)
+      logging.info(URL + ', problem with bird image')
       await ctx.send(f'**image for {bird_name} not found**')
       if (os.path.exists("bird_data/bird.jpg")):
         os.remove("bird_data/bird.jpg")
@@ -130,7 +130,7 @@ class BotCommands(commands.Cog):
       
     except Exception as e:
       logging.error(e, exc_info=True)
-      logging.info(URL + ', problem with bird text ,' + number)
+      logging.info(URL + ', problem with bird text')
       await ctx.send(f'**text for {bird_name} not found**')
       
     await ctx.send(f'*From: {URL}*')
