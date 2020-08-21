@@ -104,6 +104,8 @@ class BotCommands(commands.Cog):
     page = requests.get(URL)
     soup = BeautifulSoup(page.content, 'html.parser')
 
+    bird_name = Path(URL).stem
+
     try:
       result = soup.find('div',class_="bird-guide-image")
       img_url = result.find('img')['src']
@@ -112,7 +114,7 @@ class BotCommands(commands.Cog):
       file.write(img.content)
       file.close()
       
-      image = discord.File(open(f'bird_data/bird.jpg', 'rb'))
+      image = discord.File(open('bird_data/bird.jpg', 'rb'))
       os.remove("bird_data/bird.jpg")
       await ctx.send(file=image)
       
