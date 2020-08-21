@@ -8,7 +8,7 @@ from discord.ext import commands
 class BirdBot:
   def __init__(self, token):
     self.token = token
-    self.bot = commands.Bot(command_prefix='-')
+    self.bot = commands.Bot(command_prefix='>>')
     self.bot.load_extension("botcommands")
     self.on_ready = self.bot.event(self.on_ready)
 
