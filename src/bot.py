@@ -15,7 +15,6 @@ class BirdBot:
   def run(self):
     self.bot.run(self.token)
 
-
   async def on_ready(self):
     logging.info(f'{self.bot.user} has connected to Discord!')
  
